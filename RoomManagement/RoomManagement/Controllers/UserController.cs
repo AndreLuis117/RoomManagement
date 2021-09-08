@@ -18,11 +18,11 @@ namespace RoomManagement.Controllers
 
 
         public UserController
-            (//UserService userService
+            (UserService userService,
             AppDbContext context
             )
         {
-            //_userService = userService;
+            _userService = userService;
             _context = context;
         }
 
