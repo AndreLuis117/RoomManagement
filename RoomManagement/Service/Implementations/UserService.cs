@@ -1,12 +1,13 @@
 ﻿using Repository.Model;
 using Repository.Repository;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Service.Service
+namespace Service.Implementations
 {
     public class UserService : IUserService
     {

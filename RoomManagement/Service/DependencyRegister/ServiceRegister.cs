@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using Service.Service;
+using Service.Implementations;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
