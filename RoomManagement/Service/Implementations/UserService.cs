@@ -1,5 +1,4 @@
-﻿using Repository.Model;
-using Repository.Repository;
+﻿using Repository.Interfaces;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,14 +17,8 @@ namespace Service.Implementations
             IUserRepository userRepository
             )
         {
-            _userRepository = userRepository;   
-        }
-
-        public void Insert()
-        {
-            User user = new User { Id = 1, Name = "André Luis Cardoso" };
-
-            _userRepository.Add(user);
+            _userRepository = userRepository;
         }
     }
+    
 }

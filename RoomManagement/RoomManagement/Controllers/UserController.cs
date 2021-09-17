@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Repository.Data;
 using RoomManagement.Model;
-using Service.Service;
+using Service.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,16 +14,14 @@ namespace RoomManagement.Controllers
     public class UserController : ControllerBase
     {
         private readonly IUserService _userService;
-        public AppDbContext _context;
+        private readonly IUserMapper _mapper;
 
 
         public UserController
-            (UserService userService,
-            AppDbContext context
+            (IUserService userService
             )
         {
             _userService = userService;
-            _context = context;
         }
 
 
@@ -36,11 +34,15 @@ namespace RoomManagement.Controllers
 
             User user = new User { Id = 1, Name = "André Luis Cardoso" };
 
-            usersList.Add(user);
+            //usersList.Add(user);
 
-            users = usersList;
+            var users1 = _userService.GetAll();
 
-            _userService.Insert();
+            foreach (var item in users1)
+            {
+                usersList.Add()
+            }
+            
 
             return users;
         }
