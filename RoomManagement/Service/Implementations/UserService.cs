@@ -1,4 +1,5 @@
-﻿using Repository.Interfaces;
+﻿using Model.Api;
+using Repository.Interfaces;
 using Service.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,6 +19,31 @@ namespace Service.Implementations
             )
         {
             _userRepository = userRepository;
+        }
+
+        public void Add(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(User user)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public User GetById(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(User user)
+        {
+            throw new NotImplementedException();
         }
     }
     

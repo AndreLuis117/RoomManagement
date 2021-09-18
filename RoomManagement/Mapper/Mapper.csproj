@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Repository\Repository.csproj" />
-    <ProjectReference Include="..\RoomManagement\RoomManagement.csproj" />
   </ItemGroup>
 
 </Project>
