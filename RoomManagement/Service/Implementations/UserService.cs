@@ -1,4 +1,5 @@
-﻿using Model.Api;
+﻿using Mapper.Interfaces;
+using Model.Api;
 using Repository.Interfaces;
 using Service.Interfaces;
 using System;
@@ -12,18 +13,23 @@ namespace Service.Implementations
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IUserMapper _userMapper;
 
         public UserService
             (
-            IUserRepository userRepository
+            IUserRepository userRepository,
+            IUserMapper userMapper
             )
         {
             _userRepository = userRepository;
+            _userMapper = userMapper;
         }
 
         public void Add(User user)
         {
-            throw new NotImplementedException();
+
+            var userMapped = _userMapper.MapToRepositoryModel(user);
+            _userRepository.Add(userMapped);
         }
 
         public void Delete(User user)
@@ -33,7 +39,16 @@ namespace Service.Implementations
 
         public IEnumerable<User> GetAll()
         {
-            throw new NotImplementedException();
+            var usersList = _userRepository.GetAll();
+
+            List<User> usersListMapped = new List<User>();
+
+            foreach (var user in usersList)
+            {
+                usersListMapped.Add(_userMapper.MapToModel(user));
+            }
+
+            return usersListMapped;
         }
 
         public User GetById(int id)
