@@ -9,7 +9,7 @@ namespace Mapper.Implementations
 {
     public class UserMapper : IUserMapper
     {
-        public Repository.Model.User MapToRepositoryModel(RoomManagement.Model.User model)
+        public Repository.Model.User MapToRepositoryModel(Model.Api.User model)
         {
             Repository.Model.User repositoryModel = new Repository.Model.User();
 
@@ -22,9 +22,9 @@ namespace Mapper.Implementations
             return repositoryModel;
         }
 
-        public RoomManagement.Model.User MapToModel(Repository.Model.User repositoryModel)
+        public Model.Api.User MapToModel(Repository.Model.User repositoryModel)
         {
-            RoomManagement.Model.User model = new RoomManagement.Model.User();
+            Model.Api.User model = new Model.Api.User();
 
             model.Id = repositoryModel.Id;
             model.Name = repositoryModel.Name;
