@@ -8,8 +8,8 @@ namespace Mapper.Interfaces
 {
     public interface IUserMapper
     {
-        public Repository.Model.User MapToRepositoryModel(RoomManagement.Model.User model);
+        public Repository.Model.User MapToRepositoryModel(Model.Api.User model);
 
-        public RoomManagement.Model.User MapToModel(Repository.Model.User repositoryModel);
+        public Model.Api.User MapToModel(Repository.Model.User repositoryModel);
     }
 }
