@@ -1,3 +1,4 @@
+using Mapper.DependencyRegister;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -11,9 +12,7 @@ using Microsoft.OpenApi.Models;
 using Repository.Data;
 using Repository.DependencyRegister;
 using Repository.Generic;
-using Repository.Repository;
 using Service.DependencyRegister;
-using Service.Service;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,14 +32,20 @@ namespace RoomManagement
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            //services.AddTransient(typeof(IRepository<>), typeof(Repository<>));
-            //services.AddTransient<IUserRepository, UserRepository>();
-            //services.AddTransient<IUserService, UserService>();
             services.AddControllers();
             services.AddServices();
             services.AddRepositories();
+            services.AddMappers();
 
-            services.AddDbContext<AppDbContext>();
+            var connectionString = "server=127.0.0.1; port=3306; database=dbRoomManagement; uid=root; pwd=room123-pw";
+
+
+            services.AddDbContextPool<AppDbContext>(options =>
+                                    options.UseMySql(connectionString,
+                                    ServerVersion.AutoDetect(connectionString)));
+
+            //services.AddDbContextFactory<AppDbContext, ApplicationDbContextFactory>();
+            //services.AddTransient<ApplicationDbContextFactory>();
 
 
             services.AddSwaggerGen(c =>
